@@ -1,10 +1,11 @@
 variable "bucket_name" {
-  type        = string
   description = "Name of the S3 bucket"
+  type        = string
+  default     = my_s3
 }
 
-variable "versioning" {
-  type        = bool
-  description = "Enable versioning for the bucket"
-  default     = false
+variable "acl" {
+  description = "Access control list for the bucket (e.g., private, public-read)"
+  type        = string
+  default     = "private"
 }
