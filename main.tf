@@ -1,5 +1,16 @@
-module "s3_bucket" {
-  source      = "git::https://github.com/amitku13/s3_bucket.git?ref=main"
-  bucket_name = "my-unique-bucket-name"  # Update if variable has a different name
-  versioning  = true                     # Update if module expects another name
+resource "aws_s3_bucket" "example" {
+  bucket = var.bucket_name
+  acl    = var.acl
+
+  tags = {
+    Name = var.bucket_name
+  }
+}
+
+output "bucket_name" {
+  value = aws_s3_bucket.example.bucket
+}
+
+output "bucket_arn" {
+  value = aws_s3_bucket.example.arn
 }
